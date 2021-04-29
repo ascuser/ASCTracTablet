@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.COSM.pageCOSMByCO">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Customer Order Status" />
+                    <Label x:Name="lblCount" Style="{StaticResource stdTitleSmallLabel}" HorizontalOptions="End" Text ="Count: 0" />
+                </StackLayout>
+
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="OrderNumber" FontSize="20" TextColor="#cc6600" Grid.Column="0" Grid.Row="0" />
+                        <Label Text="Status" FontSize="20" TextColor="#cc6600" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
+                        <Label Text="Percent Complete"  FontSize="20" TextColor="#cc6600" Grid.Column="3" Grid.Row="0"/>
+                        <Label Text="Required Date" FontSize="20" TextColor="#cc6600" Grid.Column="0" Grid.Row="1"/>
+                        <Label Text="Customer" FontSize="20" TextColor="#cc6600"  Grid.Column="2"  Grid.Row="1"/>
+
+                        <ListView x:Name="listCOs" ItemSelected="OnListItemSelected" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="True" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+                            <!--
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="OrderNumber" FontSize="20" TextColor="#cc6600" Grid.Column="0" Grid.Row="0" />
+                            <Label Text="Status" FontSize="20" TextColor="#cc6600" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
+                            <Label Text="Percent Complete"  FontSize="20" TextColor="#cc6600" Grid.Column="3" Grid.Row="0"/>
+                            <Label Text="Required Date" FontSize="20" TextColor="#cc6600" Grid.Column="0" Grid.Row="1"/>
+                            <Label Text="Customer" FontSize="20" TextColor="#cc6600"  Grid.Column="2"  Grid.Row="1"/>
+                        </Grid>
+                    </ListView.Header>
+                -->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="0, 1,0,0" BackgroundColor="LightGray" >
+
+                                            <Grid BackgroundColor="White">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding OrderNumber}" FontSize="20" TextColor="Black" Grid.Column="0" Grid.Row="0" />
+                                                <Label Text="{Binding PickStatus}" FontSize="20" TextColor="Black" Grid.Column="1" Grid.Row="0"/>
+                                                <Label Text="{Binding PickStatus_Description}" FontSize="20" TextColor="Black" Grid.Column="2" Grid.Row="0"/>
+                                                <Label Text="{Binding Percent_Complete,StringFormat='{0:N2}%'}" FontSize="20" TextColor="Black" Grid.Column="3" Grid.Row="0"/>
+                                                <Label Text="{Binding requiredShipDate}" FontSize="20" HorizontalOptions="Start" TextColor="Black" Grid.Column="0" Grid.Row="1"/>
+                                                <Label Text="{Binding CustIDAndName}" FontSize="20" HorizontalOptions="Start" TextColor="Black" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.Production.pageProdIssueInventory">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Issue Inventory" />
+                </StackLayout>
+
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnIssue" Text="Issue" Clicked="onIssue" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="0"/>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" Grid.Column="1" Grid.Row="1" VerticalOptions="FillAndExpand" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text ="Work Order:" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="0" Grid.Column="0"/>
+                        <Label x:Name="lblWO" Style="{StaticResource stdDataLabel}" Grid.Row="0" Grid.Column="1"/>
+
+                        <Label Text ="Component Item:" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="1" Grid.Column="0"/>
+                        <Label x:Name="lblItemID" Style="{StaticResource stdDataLabel}" Grid.Row="1" Grid.Column="1"/>
+
+                        <Label Text ="License:" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="2" Grid.Column="0"/>
+                        <Label x:Name="lblSkidID" Style="{StaticResource stdDataLabel}" Grid.Row="2" Grid.Column="1"/>
+
+                        <Label Text ="Qty on License:" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="3" Grid.Column="0"/>
+                        <Label x:Name="lblQtyAvail" Style="{StaticResource stdDataLabel}" Grid.Row="3" Grid.Column="1"/>
+
+                        <Label Text ="Qty Issued:" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="4" Grid.Column="0"/>
+                        <Entry x:Name="edQty" Keyboard="Numeric" Style="{StaticResource stdDataEntry}" Grid.Row="4" Grid.Column="1"/>
+                        <!--
+                    <Label Style="{StaticResource stdDetailLabel}"  Text="Printer:" Grid.Row="5" Grid.Column="0"/>
+                    <Picker x:Name="pickPrinter" SelectedIndex="0" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="1"/>
+                        -->
+                        <StackLayout Orientation="Horizontal"  Grid.Column="0" Grid.Row="5" Grid.RowSpan="10">
+                            <!-- This is filler to prevent above from stretching-->
+                        </StackLayout>
+
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

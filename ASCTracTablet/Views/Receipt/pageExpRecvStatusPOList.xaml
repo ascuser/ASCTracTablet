@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.Receipt.pageExpRecvStatusPOList">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Expected Receipt Status Metrics" />
+                    <Label x:Name="lblCount" Style="{StaticResource stdTitleSmallLabel}" HorizontalOptions="End" Text ="Count: 0" />
+                </StackLayout>
+
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Style="{StaticResource stdGridHeaderLabel}" Text ="PO Number" Grid.Row="0" Grid.Column="1"/>
+                        <Label Style="{StaticResource stdGridHeaderLabel}" Text ="Status"  Grid.Row="0" Grid.Column="2"/>
+                        <Label Style="{StaticResource stdGridHeaderLabel}" Text ="Vendor" Grid.Row="0" Grid.Column="3"/>
+                        <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text ="Complete" Grid.Row="0" Grid.Column="4"/>
+
+                        <ListView x:Name="listPOs" ItemSelected="OnListItemSelected" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="True" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="0, 1,0,0" BackgroundColor="LightGray" >
+                                            <Grid BackgroundColor="White" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="30*"/>
+                                                    <ColumnDefinition Width="20*"/>
+                                                    <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <BoxView Color="{Binding bgColor}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Margin="1"/>
+                                                <Label Text="{Binding PONumber}"  TextColor="Black" FontSize="Default"  Grid.Column="1" Grid.Row="0" />
+                                                <Label Text="{Binding Status}" TextColor="Black" FontSize="Default" Grid.Column="2" Grid.Row="0"/>
+                                                <Label Text="{Binding Status_Description}" TextColor="Black" FontSize="Default" Grid.Column="2" Grid.Row="1"/>
+                                                <Label Text="{Binding VendorID}" TextColor="Black" FontSize="Default" Grid.Column="3" Grid.Row="0"/>
+                                                <Label Text="{Binding VendorName}" TextColor="Black" FontSize="Default" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding Percent_Complete, StringFormat='{0:N} %'}" TextColor="Black" FontSize="Default"  HorizontalTextAlignment="End" Grid.Column="4" Grid.Row="0"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

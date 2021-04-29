@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.InvFunctions.Physical.pagePhysCountLocList">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Physical Count Review" />
+                </StackLayout>
+                <ListView x:Name="listLocs" SeparatorColor="Green">
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Style="{StaticResource stdInstructionLabel}" Text="Select Location to Review" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+                            <Label Style="{StaticResource stdGridHeaderLabel}" Text ="Location" Grid.Row="1" Grid.Column="0"/>
+                            <Label Style="{StaticResource stdGridHeaderLabel}" Text ="Status" Grid.Row="1" Grid.Column="1"/>
+                            <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text ="Variances" Grid.Row="1" Grid.Column="2"/>
+                            <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text ="Moves" Grid.Row="1" Grid.Column="3"/>
+                            <Label Style="{StaticResource stdGridHeaderLabel}" Text ="Time Counted" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="0, 1,0,0" BackgroundColor="LightGray" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding LocationID}" FontSize="Default"  Grid.Column="0" Grid.Row="0" />
+                                        <Label Text="{Binding Status}" FontSize="Default" Grid.Column="1" Grid.Row="0"/>
+                                        <Label Text="{Binding numVars, StringFormat='{0:F0}'}" FontSize="Default"  Grid.Column="2" Grid.Row="0" HorizontalTextAlignment="End"/>
+                                        <Label Text="{Binding numMoves, StringFormat='{0:F0}'}" FontSize="Default"  Grid.Column="3" Grid.Row="0" HorizontalTextAlignment="End"/>
+                                        <Label Text="{Binding CountedDateTime, StringFormat='{0:MM/dd/yy hh:mm}'}" HorizontalOptions="Start" FontSize="Default"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

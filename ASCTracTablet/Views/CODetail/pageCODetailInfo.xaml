@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.CODetail.pageCODetailInfo">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Customer Order Status" />
+                </StackLayout>
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnUpdate" Text="Update" Clicked="btnUpdate_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="0"/>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" Grid.Column="1" Margin="0,0,3,0"  Grid.Row="1" VerticalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Customer Order:" />
+                            <Label Style="{StaticResource stdDataLabel}" Text ="{Binding OrderNumber}" />
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Line:" />
+                            <Label Style="{StaticResource stdDataLabel}" Text ="{Binding LineNumber}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Item ID:" />
+                            <Label Style="{StaticResource stdDataLabel}" Text ="{Binding ItemID}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                            <Label Style="{StaticResource stdDataLabel}" Text ="{Binding Description}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Pick Loc:" />
+                            <Label Style="{StaticResource stdDataLabel}" Text ="{Binding PickLocation}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Grid.RowSpan="2">
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource stdDetailLabel}" Text ="Qty Ordered" HorizontalOptions="End" HorizontalTextAlignment="End" />
+                                <Label  Style="{StaticResource stdDataLabel}" Text ="{Binding QtyOrdered}" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource stdDetailLabel}" Text ="Qty Picked" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                                <Label Style="{StaticResource stdDataLabel}" Text ="{Binding QtyPicked}" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <Label Style="{StaticResource stdDetailLabel}" Text ="Qty Loaded" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                                <Label Style="{StaticResource stdDataLabel}" Text ="{Binding QtyLoaded}" HorizontalOptions="End" HorizontalTextAlignment="End"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="6">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Status:"/>
+                            <Picker x:Name="pickStatus" SelectedIndex="0" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"  Grid.Column="0" Grid.Row="7">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Clear Loc:" />
+                            <Switch x:Name="chbClearLoc" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"  Grid.Column="0" Grid.Row="8" Grid.RowSpan="7">
+                            <!-- This is filler to prevent above from stretching-->
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

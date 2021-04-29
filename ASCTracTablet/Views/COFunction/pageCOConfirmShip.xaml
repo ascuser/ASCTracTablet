@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.COFunction.pageCOConfirmShip">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Confirm Ship" />
+                </StackLayout>
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnShip" Text="Ship" Clicked="btnShip_Clicked"  Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="0"/>
+                        <Button x:Name="btnBOL" Text="BOL" Clicked="btnBOL_Clicked"  Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="1"/>
+                        <Button x:Name="btnPacklist" Text="Packlist" Clicked="btnPacklist_Clicked"  Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="2"/>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="16*"/>
+                            <ColumnDefinition Width="16*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Style="{StaticResource stdDetailLabel}" Text ="Customer Order:" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="{Binding OrderNumber}" Style="{StaticResource stdDataLabel}" Grid.Row="0" Grid.Column="2"/>
+
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

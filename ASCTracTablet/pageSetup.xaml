@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.pageSetup">
+    <ContentPage.Content>
+        <ScrollView>
+            <RelativeLayout>
+                <BoxView Color="{StaticResource colorASCBlue}"
+            RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0,Constant=0}"
+            RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0, Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.0,Constant=180}"/>
+                <Label TextColor="Black" FontSize="48" Text ="ASCTrac" HorizontalTextAlignment="Center"
+            RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0,Constant=0}"
+            RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0, Constant=4}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=56}"/>
+                <Image Source="ASCMainLogo.jpg" x:Name="myImage"
+            RelativeLayout.XConstraint = "{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.25,Constant=0}"
+            RelativeLayout.YConstraint = "{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=0, Constant=64}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=.5,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=104}"/>
+
+                <Label TextColor="#77d065" FontSize = "22" Text="Host URL:" HorizontalTextAlignment="End"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=210}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0, Constant=10}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0.45,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=50}"/>
+                <Entry x:Name="edHostURL" FontSize = "22"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=260}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1, Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0.8,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=50}"/>
+
+
+                <Button x:Name="btnSave" Text="Save" Clicked="onSave" FontSize="20" BackgroundColor="#EEB422"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=320}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.75, Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=0.2,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0,Constant=64}"/>
+
+            </RelativeLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="colorGridBackGround">#FFFAF0</Color>
+            <Color x:Key="colorGridBackGroundStart">#FFFBF0</Color>
+            <Color x:Key="colorGridBackGroundStop">#FFFAF0</Color>
+            <Color x:Key="colorGridHeaderBackGround">#FFFAFA</Color>
+            <Color x:Key="colorGridText">Black</Color>
+            <Color x:Key="colorGridHeaderText">#cc6600</Color>
+            <Color x:Key="colorASCBlue">#5B8DAF</Color>
+            <Color x:Key="colorASCBlueStart">#5B8DDA</Color>
+            <Color x:Key="colorASCBlueStop">#5B8DAF</Color>
+
+            <Color x:Key="colorDetailLabelBackGround">White</Color>
+            <Color x:Key="colorDetailLabelText">Green</Color>
+            <Color x:Key="colorDataLabelText">Black</Color>
+            <Color x:Key="colorDetailEntryBackGround">White</Color>
+            <Color x:Key="colorDetailEntryText">Black</Color>
+
+            <Color x:Key="colorStdButtonStart">#eeb422</Color>
+            <Color x:Key="colorStdButtonStop">#EEe5C3</Color>
+            
+            <Style x:Key="stdMenuButtonStyle" TargetType="Button" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="Margin" Value="1" />
+                <Setter Property="BorderRadius" Value="0" />
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#708090"/>
+            </Style>
+
+            <Style x:Key="stdButtonStyle" TargetType="Button" >
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="Black"/>
+                <!--<Setter Property="BackgroundColor" Value="#EEB422"/>-->
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush>
+                            <GradientStop Color="{StaticResource colorStdButtonStop}" Offset="0.2" />
+                            <GradientStop Color="{StaticResource colorStdButtonStart}"  Offset="1.0" />
+                        </RadialGradientBrush>
+                        <!--
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#eeC5C3" Offset="1.0"/>
+                            <GradientStop Color="#EEB422" Offset="0.6"/>
+                        </LinearGradientBrush>
+                        -->
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="BorderColor" Value="#bab52c"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+            <!--  Style for backup button -->
+            <Style x:Key="stdButtonStyleBack" TargetType="Button" >
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorASCBlue}"/>
+                <Setter Property="CornerRadius" Value="3"/>
+                <Setter Property="BorderColor" Value="#161f66"/>
+                <Setter Property="BorderWidth" Value="2"/>
+            </Style>
+            <Style x:Key="stdButtonStyleNew" TargetType="Button" >
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorASCBlue}"/>
+            </Style>
+            <Style x:Key="stdButtonStyle16" TargetType="Button" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="Black"/>
+                <!--<Setter Property="BackgroundColor" Value="#EEB422"/>-->
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush>
+                            <GradientStop Color="{StaticResource colorStdButtonStop}" Offset="0.2" />
+                            <GradientStop Color="{StaticResource colorStdButtonStart}"  Offset="1.0" />
+                        </RadialGradientBrush>
+                        <!--
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#eeC5C3" Offset="1.0"/>
+                            <GradientStop Color="#EEB422" Offset="0.6"/>
+                        </LinearGradientBrush>
+                        -->
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+
+            <Style x:Key="stdGridLabel" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorGridBackGround}"/>
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+            <Style x:Key="stdGridQtyLabel" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorGridBackGround}"/>
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+            <Style x:Key="stdGridQtyLabelNoBGColor" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+            <Style x:Key="stdGridLabelNoBGColor" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+            <Style x:Key="stdGridHeaderLabel" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="#cc6600"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorGridHeaderBackGround}"/>
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+            <Style x:Key="stdGridHeaderQtyLabel" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="#cc6600"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorGridHeaderBackGround}"/>
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="stdTitleLabel" TargetType="Label" >
+                <!--
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" >48</On>
+                            <On Platform="UWP|Android">48</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                -->
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="TextColor" Value="White"/>
+                <!--<Setter Property="BackgroundColor" Value="{StaticResource colorASCBlue}"/>-->
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{StaticResource colorASCBlueStart}" Offset="1.0"/>
+                            <GradientStop Color="{StaticResource colorASCBlueStop}" Offset="0.1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="stdTitleSmallLabel" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource colorASCBlueStart}"/>
+                <Setter Property="Padding" Value="2,0"/>
+                <Setter Property="Margin" Value="2,0"/>
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+            </Style>
+            <Style x:Key="stdInstructionLabel" TargetType="Label" >
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="Olive"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="stdDetailLabel" TargetType="Label" >
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS">"Small"</On>
+                            <On Platform="UWP|Android">"Default"</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource colorDetailLabelText}"/>
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="HorizontalTextAlignment" Value="End"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="0,0,5,0" />
+            </Style>
+            <Style x:Key="stdDataLabel" TargetType="Label" >
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS">"Small"</On>
+                            <On Platform="UWP|Android">"Default"</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource colorDataLabelText}"/>
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="stdDataEntry" TargetType="Entry" >
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS">"Small"</On>
+                            <On Platform="UWP|Android">"Default"</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource colorDataLabelText}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

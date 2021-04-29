@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.CODetail.pageCODetailList">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Customer Order Status" />
+                </StackLayout>
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnRecalc" Text="ReCalc PCE" Clicked="btnRecalc_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="0"/>
+                        <Button x:Name="btnRecalcPicks" Text="ReCalc Picks" Clicked="btnRecalcPicks_Clicked"  Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="1"/>
+                        <Button x:Name="btnSchedule" Text="Schedule" Clicked="btnSchedule_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="2"/>
+                        <Button x:Name="btnShip" Text="Confirm Ship" Clicked="btnShip_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="3"/>
+                        <Button x:Name="btnOE" Text="Order Entry" Clicked="btnOE_Clicked"  Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="4"/>
+                        <Button x:Name="btnCapture" Text="Document Capture" Clicked="BtnCapture_Clicked"  Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="5"/>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Customer Order:" />
+                            <Label x:Name="lblOrderNumber" Text="{Binding OrderNumber}" Style="{StaticResource stdDataLabel}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Customer:" />
+                            <Label Text="{Binding CustIDAndName}" Style="{StaticResource stdDataLabel}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Required Ship Date:" />
+                            <Label x:Name="lblRequiredShipDate" Text="{Binding requiredShipDate}" Style="{StaticResource stdDataLabel}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Scheduled Ship Date:" />
+                            <Label Text="{Binding Sched_Datetime}" Style="{StaticResource stdDataLabel}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="4">
+                            <Label Style="{StaticResource stdDetailLabel}" Text ="Pick Status:"  />
+                            <Label x:Name="lblPickStatus" Text="{Binding PickStatus_Description}" Style="{StaticResource stdDataLabel}"/>
+                        </StackLayout>
+                        <ListView x:Name="listOrdrDets" ItemSelected="listOrdrDets_ItemSelected" VerticalOptions="FillAndExpand" HasUnevenRows="True" Grid.Column="0" Grid.Row="5" Grid.RowSpan="10">
+                            <ListView.Header>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Line Num" Style="{StaticResource stdGridHeaderLabel}"  Grid.Column="0" Grid.Row="0" />
+                                    <Label Text="Status" Style="{StaticResource stdGridHeaderLabel}" Grid.Column="1" Grid.Row="0" />
+                                    <Label Text="Item/Description"  Style="{StaticResource stdGridHeaderLabel}" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="5"/>
+                                    <Label Text=" PCE" Style="{StaticResource stdGridHeaderLabel}"  Grid.Column="0"  Grid.Row="1"/>
+                                    <Label Text=" Qty" Style="{StaticResource stdGridHeaderLabel}"  Grid.Column="2"  Grid.Row="1"/>
+                                    <Label Text=" Picked" Style="{StaticResource stdGridHeaderLabel}"  Grid.Column="3"  Grid.Row="1"/>
+                                    <Label Text=" Loaded" Style="{StaticResource stdGridHeaderLabel}"  Grid.Column="4"  Grid.Row="1"/>
+                                    <Label Text=" Pick Loc" Style="{StaticResource stdGridHeaderLabel}"  Grid.Column="5"  Grid.Row="1"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <SwipeView>
+                                            <SwipeView.RightItems>
+                                                <SwipeItem Text="Close" BackgroundColor="Red" Invoked="onCloseDetail" />
+                                            </SwipeView.RightItems>
+                                            <StackLayout Padding="0,1,0,0"  BackgroundColor="LightGray">
+                                                <Grid BackgroundColor="{Binding bgColor}">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding LineNumber}" Style="{StaticResource stdGridLabelNoBGColor}" Grid.Column="0" Grid.Row="0" />
+                                                    <Label Text="{Binding Status}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="1" Grid.Row="0"/>
+                                                    <Label Text="{Binding ItemAndDescription}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="5"/>
+                                                    <Label Text="{Binding PCETypeDesc, StringFormat=' {0:s}'}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="0" Grid.Row="1"/>
+                                                    <Label Text="{Binding QtyOrdered, StringFormat=' {0:N}'}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="2" Grid.Row="1"/>
+                                                    <Label Text="{Binding QtyPicked, StringFormat=' {0:N}'}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="3" Grid.Row="1"/>
+                                                    <Label Text="{Binding QtyLoaded, StringFormat=' {0:N}'}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="4" Grid.Row="1"/>
+                                                    <Label Text="{Binding PickLocation, StringFormat=' {0:s}'}" Style="{StaticResource stdGridLabelNoBGColor}"  Grid.Column="5" Grid.Row="1"/>
+                                                </Grid>
+                                            </StackLayout>
+                                        </SwipeView>
+                                        <ViewCell.ContextActions>
+                                            <MenuItem Text="Close" IsDestructive="False" CommandParameter="{Binding .}" Clicked="onCloseDetail"></MenuItem>
+                                        </ViewCell.ContextActions>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.CODetail.pageCODetailTab">
+    <TabbedPage.ToolbarItems>
+        <!--
+        <ToolbarItem x:Name="mnuRecalcPCE" Order="Primary" Text="Recalc PCE" Priority="0" IsVisible="False">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <OnPlatform.iOS>
+                        <FileImageSource File="ic_edit.png"/>
+                    </OnPlatform.iOS>
+                    <OnPlatform.Android>
+                        <FileImageSource File="ic_edit.png"/>
+                    </OnPlatform.Android>
+                    <OnPlatform.WinPhone>
+                        <FileImageSource File="Assets/ic_edit.png"/>
+                    </OnPlatform.WinPhone>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+
+        </ToolbarItem>
+        <ToolbarItem x:Name="mnuRecalcPicks" Order="Primary" Text="Recalc Picks" Priority="1" IsVisible="False">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <OnPlatform.iOS>
+                        <FileImageSource File="ic_edit.png"/>
+                    </OnPlatform.iOS>
+                    <OnPlatform.Android>
+                        <FileImageSource File="ic_edit.png"/>
+                    </OnPlatform.Android>
+                    <OnPlatform.WinPhone>
+                        <FileImageSource File="Assets/ic_edit.png"/>
+                    </OnPlatform.WinPhone>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+
+        </ToolbarItem>
+            -->
+        <ToolbarItem x:Name="mnuPicklist" Order="Secondary" Text="Picklist" Priority="2" />
+        <ToolbarItem x:Name="mnuBOL" Order="Secondary" Text="BOL" Priority="3" />
+        <ToolbarItem x:Name="mnuPacklist" Order="Secondary" Text="Packlist" Priority="4" />
+    </TabbedPage.ToolbarItems>
+</TabbedPage>

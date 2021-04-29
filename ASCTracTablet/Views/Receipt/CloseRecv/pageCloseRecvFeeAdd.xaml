@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.Receipt.CloseRecv.pageCloseRecvFeeAdd">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Close Receipt (Add 3PL Fee)" />
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Style="{StaticResource stdDetailLabel}" Text ="PO/Receiver:"  Grid.Row="0" Grid.Column="0"/>
+                    <Label x:Name="lblPONumber" Style="{StaticResource stdDataLabel}" Text ="" Grid.Row="0" Grid.Column="1"/>
+
+                    <Button x:Name="btnNext" Text="Save" Clicked="btnNext_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"/>
+                    <Button x:Name="btnClose" Text="Cancel" Clicked="btnClose_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Row="0" Grid.Column="5" Grid.RowSpan="2"/>
+
+                    <Label Style="{StaticResource stdDetailLabel}" Text ="Vendor:" Grid.Row="1" Grid.Column="0"/>
+                    <Label x:Name="lblVendorInfo" Style="{StaticResource stdDataLabel}" Text ="N/A" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+
+                    <Label Style="{StaticResource stdDetailLabel}" Text ="Code:" Grid.Row="2" Grid.Column="0"/>
+                    <Picker x:Name="cbCode" HorizontalOptions="Start" Grid.Row="2" Grid.Column="1" SelectedIndexChanged="cbCode_SelectedIndexChanged"/>
+                    <Label Style="{StaticResource stdDetailLabel}" Text ="Quantity:" Grid.Row="3" Grid.Column="0"/>
+                    <Entry x:Name="edQty" HorizontalOptions="Start" Grid.Row="3" Grid.Column="1"/>
+                    <Label Style="{StaticResource stdDetailLabel}" Text ="Fee:" Grid.Row="4" Grid.Column="0"/>
+                    <Entry x:Name="edFee" HorizontalOptions="Start" Grid.Row="4" Grid.Column="1"/>
+                    <Label Style="{StaticResource stdDetailLabel}" Text ="Notes:" Grid.Row="5" Grid.Column="0"/>
+                    <Entry x:Name="edNotes" HorizontalOptions="Start" Grid.Row="5" Grid.Column="1"/>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

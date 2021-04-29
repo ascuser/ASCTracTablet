@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.Production.pageProdLicenses">
+    <ContentPage.Content>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Work Order Production" />
+                </StackLayout>
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="2" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                            <Label Text="Count: " Style="{StaticResource stdDetailLabel}" />
+                            <Label x:Name="lblCount" Text="N/A" Style="{StaticResource stdDataLabel}" />
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text ="Work Order:" Style="{StaticResource stdDetailLabel}" Grid.Column="0" Grid.Row="0"/>
+                        <Label  x:Name="lblWO" Style="{StaticResource stdDataLabel}" Grid.Column="1" Grid.Row="0"/>
+
+                        <ListView x:Name="listLicenses" SeparatorColor="Green" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="10">
+                            <ListView.Header>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Select License to Change" TextColor="Olive" FontSize="Default" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+                                    <Label Style="{StaticResource stdGridHeaderLabel}" Text ="License"  Grid.Row="1" Grid.Column="0"/>
+                                    <Label Style="{StaticResource stdGridHeaderLabel}" Text ="QC Status" Grid.Row="1" Grid.Column="1"/>
+                                    <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text ="Qty"  Grid.Row="1" Grid.Column="3"/>
+                                    <Label Style="{StaticResource stdGridHeaderLabel}" Text ="LotID" Grid.Row="2" Grid.Column="0"/>
+                                    <Label Style="{StaticResource stdGridHeaderLabel}" Text ="Reason" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItem Text="Label" BackgroundColor="LightSkyBlue" Invoked="onLabel" />
+                                            <SwipeItem Text="QC Hold" BackgroundColor="Red" Invoked="onHold" />
+                                        </SwipeView.RightItems>
+                                        <StackLayout Padding="0,1,0,0"  BackgroundColor="LightGray">
+                                            <Grid BackgroundColor="White">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20*"/>
+                                                        <ColumnDefinition Width="10*"/>
+                                                        <ColumnDefinition Width="20*"/>
+                                                        <ColumnDefinition Width="10*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="{Binding SkidID}" Style="{StaticResource stdGridLabel}" Grid.Column="0" Grid.Row="0" />
+                                                    <Label Text="{Binding QAHold}" Style="{StaticResource stdGridLabel}" Grid.Column="1" Grid.Row="0"/>
+                                                    <Label Text="{Binding QtyTotal, StringFormat='{0:N}'}" Style="{StaticResource stdGridQtyLabel}" Grid.Column="3" Grid.Row="0"/>
+                                                    <Label Text="{Binding LotID}" Style="{StaticResource stdGridLabel}"  Grid.Row="1" Grid.Column="0"/>
+                                                    <Label Text="{Binding ReasonForHold}" Style="{StaticResource stdGridLabel}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                                </Grid>
+                                        </StackLayout>
+                                    </SwipeView>
+                                </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

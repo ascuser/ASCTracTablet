@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.Receipt.pageExpRecvStatus">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Expected Receipts Status Metrics" />
+                </StackLayout>
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnRefresh" IsVisible="True" Text="Refresh" Clicked="btnRefresh_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="0"/>
+                    </Grid>
+
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="10*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text ="Date Field :" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="0" Grid.Column="0"/>
+                        <Picker x:Name="pickDateField" SelectedIndex="0" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"/>
+
+                        <Label Text ="Date Range :" Style="{StaticResource stdDetailLabel}" Margin="0,0,5,0" Grid.Row="1" Grid.Column="0"/>
+                        <Picker x:Name="pickDateRange" SelectedIndex="0" HorizontalOptions="FillAndExpand"  Grid.Row="1" Grid.Column="1"/>
+
+                        <BoxView Color="LightGray" Margin="5,0,5,0" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4"/>
+
+
+                        <Label Text ="Open" Style="{StaticResource stdDetailLabel}" TextColor="White" Margin="0,0,5,0" Grid.Column="0" Grid.Row="2"/>
+                        <Switch x:Name="chbOpen" HorizontalOptions="StartAndExpand" Grid.Column="1" Grid.Row="2"/>
+                        <Label Text ="Received" Style="{StaticResource stdDetailLabel}" TextColor="White" Margin="0,0,5,0" Grid.Column="0" Grid.Row="3"/>
+                        <Switch x:Name="chbReceived" HorizontalOptions="StartAndExpand" Grid.Column="1" Grid.Row="3"/>
+
+                    <ScrollView VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4">
+                        <Grid x:Name="GridPOStat" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" >
+                            <Grid.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="{StaticResource colorGridBackGroundStart}" Offset="1"/>
+                                    <GradientStop Color="{StaticResource colorGridBackGroundStop}" Offset="0.2"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

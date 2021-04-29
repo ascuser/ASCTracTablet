@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.Views.Replen.pageReplenLocList">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="btnEsc" Style="{StaticResource stdButtonStyleBack}" Text="&lt;&lt;" Clicked="BtnEsc_Clicked"/>
+                    <Label Style="{StaticResource stdTitleLabel}" Text ="Replenishment Information" />
+                </StackLayout>
+                <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="1" Grid.Row="0" />
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnRefresh" IsVisible="True" Text="Refresh" Clicked="BtnRefresh_Clicked" Style="{StaticResource stdButtonStyle}" Grid.Column="0" Grid.Row="0"/>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="2" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                            <Label Text="Count: " Style="{StaticResource stdDetailLabel}" />
+                            <Label x:Name="lblCount" Text="N/A" Style="{StaticResource stdDataLabel}" />
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid RowSpacing="1" ColumnSpacing="1" HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Zone ID:" Style="{StaticResource stdDetailLabel}" Grid.Column="0" Grid.Row="0" />
+                        <Label Text="{Binding ZoneID}" Style="{StaticResource stdDataLabel}" Grid.Column="1" Grid.Row="0" />
+                        <Label Text="Description:" Style="{StaticResource stdDetailLabel}" Grid.Column="0" Grid.Row="1" />
+                        <Label Text="{Binding ZoneDesc}" Style="{StaticResource stdDataLabel}" Grid.Column="1" Grid.Row="1" />
+                        <Label Text="Total Locations:" Style="{StaticResource stdDetailLabel}" Grid.Column="0" Grid.Row="2" />
+                        <Label Text="{Binding LocTotal}" Style="{StaticResource stdDataLabel}" Grid.Column="1" Grid.Row="2" />
+                        <Label Text="Locations Short:" Style="{StaticResource stdDetailLabel}" Grid.Column="0" Grid.Row="3" />
+                        <Label Text="{Binding LocShort}" Style="{StaticResource stdDataLabel}" Grid.Column="1" Grid.Row="3" />
+                        <Label Text="Qty Short:" Style="{StaticResource stdDetailLabel}" Grid.Column="0" Grid.Row="4" />
+                        <Label Text="{Binding QtyShort}" Style="{StaticResource stdDataLabel}" Grid.Column="1" Grid.Row="4" />
+                        <ListView x:Name="listReplenLocs" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemSelected="ListReplenLocs_ItemSelected" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource colorGridBackGround}">
+                            <ListView.Header>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Style="{StaticResource stdGridHeaderLabel}" Text="Location" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                    <Label Style="{StaticResource stdGridHeaderLabel}" Text="Description" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                    <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text="Restock Pt" Grid.Row="0" Grid.Column="2"/>
+                                    <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text="Restock Qty" Grid.Row="0" Grid.Column="3"/>
+                                    <Label Style="{StaticResource stdGridHeaderQtyLabel}" Text="Qty Needed" Grid.Row="0" Grid.Column="4"/>
+                                </Grid>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="0, 1,0,0" BackgroundColor="LightGray" >
+                                            <Grid BackgroundColor="{StaticResource colorGridBackGround}">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Text="{Binding LocationID}" Style="{StaticResource stdGridLabel}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding LocationDesc}" Style="{StaticResource stdGridLabel}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                                <Label Text="{Binding RestockPoint , StringFormat='{0:N}'}" Style="{StaticResource stdGridQtyLabel}" Grid.Column="2" Grid.Row="0"/>
+                                                <Label Text="{Binding RestockQty, StringFormat='{0:N}'}" Style="{StaticResource stdGridQtyLabel}" Grid.Column="3" Grid.Row="0"/>
+                                                <Label Text="{Binding QtyToPick, StringFormat='{0:N}'}" Style="{StaticResource stdGridQtyLabel}" Grid.Column="4" Grid.Row="0" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

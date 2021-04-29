@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASCTracTablet.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="mnuSetup" Text="Setup">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <OnPlatform.iOS>
+                        <FileImageSource File="ic_edit.png"/>
+                    </OnPlatform.iOS>
+                    <OnPlatform.WinPhone>
+                        <FileImageSource File="Assets/ic_edit.png"/>
+                    </OnPlatform.WinPhone>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem x:Name="mnuAbout" Text="About">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <OnPlatform.iOS>
+                        <FileImageSource File="ic_edit.png"/>
+                    </OnPlatform.iOS>
+                    <OnPlatform.WinPhone>
+                        <FileImageSource File="Assets/ic_About2.png"/>
+                    </OnPlatform.WinPhone>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="myImage" HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="4">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>
+                                <FileImageSource File="ascSplash2018.jpg"/>
+                            </OnPlatform.iOS>
+                            <OnPlatform.Android>
+                                <FileImageSource File="ascSplash2018.jpg"/>
+                            </OnPlatform.Android>
+                            <OnPlatform.WinPhone>
+                                <FileImageSource File="Assets/ascSplash2018.jpg"/>
+                            </OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+
+                <Label TextColor="#77d065" FontSize="Medium"  Text="User ID:" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5"/>
+                <Entry x:Name="edUserID" FontSize="Medium"  Completed="OnUserCompleted" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="5" />
+                <Label TextColor="#77d065" FontSize="Medium"  Text="Password:" HorizontalTextAlignment="End" VerticalTextAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="6"/>
+                <Entry x:Name="edPassword" IsPassword="True" FontSize="Medium"  Completed="OnPasswordCompleted" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6" />
+                <Label x:Name="lblHHID" FontSize="Micro" Grid.Column="4" Grid.Row="7" HorizontalTextAlignment="End"/>
+                <!--
+                <StackLayout Grid.Column="5" Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <Image Source="SetupBlue.png" IsVisible="False">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="onSetup"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image x:Name="ImageLogin" Source="EnterKeyBlue.png" IsVisible="False">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="onLogon"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                -->
+                <Button x:Name="btnSetup" IsVisible="False" Text="Setup" Style="{StaticResource stdButtonStyle16}" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="5" />
+                <Button x:Name="btnLogon" IsVisible="True" Text="Logon" Style="{StaticResource stdButtonStyle16}" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="6" />
+                <ActivityIndicator x:Name="myIndicator" IsVisible="false" IsRunning="false" Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="3"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
